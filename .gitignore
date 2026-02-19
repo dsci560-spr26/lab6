@@ -1,0 +1,7 @@
+Lab6_PDFs/
+*.pdf
+*.csv
+.DS_Store
+__pycache__/Lab6_PDFs/
+*.csv
+__pycache__/
