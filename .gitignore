@@ -1,0 +1,20 @@
+# Data folder (raw PDFs)
+Lab6_PDFs/
+
+# System files
+.DS_Store
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Debug / temporary files
+debug_page.html
+debug_page.png
+test_requests.py
+test_scraper.py
+
+# Virtual environments
+.venv/
+venv/
+env/
