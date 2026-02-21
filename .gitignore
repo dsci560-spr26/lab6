@@ -1,8 +1,7 @@
 # Project data files
 Lab6_PDFs/
 *.pdf
-*.csv
-.DS_Store
+*.DS_Store
 
 # Python cache
 __pycache__/
