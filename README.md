@@ -23,8 +23,9 @@ This part of the project focuses on:
 
 lab6/
 ├── batch_extract.py
-├── test_ocr.py
-├── .gitignore
+├── batch_scrape.py
+├── extracted_results.csv
+├── final_enriched_results.csv
 └── README.md
 
 Raw PDF files are intentionally excluded from this repository.
