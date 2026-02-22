@@ -23,8 +23,8 @@ import pandas as pd
 DB_CONFIG = {
     "host":     os.getenv("MYSQL_HOST", "localhost"),
     "port":     int(os.getenv("MYSQL_PORT", 3306)),
-    "user":     os.getenv("MYSQL_USER", "root"),
-    "password": os.getenv("MYSQL_PASSWORD", ""),
+    "user":     os.getenv("MYSQL_USER", "labuser"),
+    "password": os.getenv("MYSQL_PASSWORD", "labpass"),
     "database": os.getenv("MYSQL_DB", "oil_wells_db"),
 }
 

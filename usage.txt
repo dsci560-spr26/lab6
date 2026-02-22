@@ -1,0 +1,55 @@
+========================================
+Local Development
+========================================
+
+Start frontend:
+  npm run dev
+
+Start backend:
+  node server.js
+
+Frontend fetch should use localhost:
+  fetch('http://localhost:3000/api/locations')
+
+
+========================================
+Deploying to VM
+========================================
+
+1. Update frontend fetch URL to VM IP:
+   fetch('http://192.168.164.129:3000/api/locations')
+
+2. Build the frontend:
+   npm run build
+
+3. Transfer frontend to VM:
+   scp -r dist/* user@192.168.164.129:/var/www/frontend
+
+4. Transfer backend to VM:
+   scp -r backend/ user@192.168.164.129:~/backend
+
+5. Restart backend:
+   pm2 restart backend
+
+
+========================================
+Connect Local Backend to VM's MySQL
+========================================
+
+On the VM:
+
+1. Allow MySQL remote connections:
+   sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+   Change bind-address to 0.0.0.0
+   sudo systemctl restart mysql
+
+2. Grant remote access to the user:
+   mysql -u root -p
+   GRANT ALL PRIVILEGES ON oil_wells_db.* TO 'labuser'@'%';
+   FLUSH PRIVILEGES;
+
+3. Open firewall port:
+   sudo ufw allow 3306
+
+In local backend server.js, update the host:
+   host: "192.168.164.129"
