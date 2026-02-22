@@ -23,13 +23,17 @@ This part of the project focuses on:
 
 ```
 lab6/
-├── batch_extract.py           # PDF OCR extraction
-├── batch_scrape.py            # Web scraping from drillingedge.com
-├── extracted_results.csv      # Raw OCR output
-├── final_enriched_results.csv # OCR + scraping merged (77 rows)
-├── schema.sql                 # MySQL DDL — creates database & 3 tables
-├── load_to_db.py              # ETL script — CSV → clean → MySQL
-├── queries.sql                # Demo queries for verification & presentation
+├── batch_extract.py              # v1: PDF OCR extraction (page 1 only)
+├── batch_extract_v2.py           # v2: pdftotext full-text extraction (all pages)
+├── batch_scrape.py               # Web scraping from drillingedge.com
+├── extracted_results.csv         # v1 OCR output
+├── extracted_wells_v2.csv        # v2 well data (77 rows, 11 columns)
+├── extracted_stimulations_v2.csv # v2 stimulation data (40 rows)
+├── final_enriched_results.csv    # v1 OCR + scraping merged
+├── schema.sql                    # MySQL DDL — creates database & 3 tables
+├── load_to_db.py                 # v1 ETL script
+├── load_to_db_v2.py              # v2 ETL script — reads v2 CSVs → MySQL
+├── queries.sql                   # Demo queries for verification & presentation
 └── README.md
 ```
 
@@ -76,45 +80,67 @@ The script will:
 
 ---
 
-## Database Pipeline (schema.sql + load_to_db.py + queries.sql)
+## Database Pipeline
 
 ### Pipeline Overview
 
+There are two versions of the pipeline. **Use v2** (recommended):
+
 ```
-PDF files ──→ batch_extract.py ──→ extracted_results.csv
-                                          │
-                                          ▼
-                                   batch_scrape.py ──→ final_enriched_results.csv
-                                                              │
-                                                              ▼
-                                                       load_to_db.py ──→ MySQL (oil_wells_db)
-                                                                              │
-                                                                              ▼
-                                                                        Part 2: Map Visualization
+v1 (original):
+  PDF page 1 ──→ batch_extract.py (OCR) ──→ extracted_results.csv
+                                                     │
+                                              batch_scrape.py ──→ final_enriched_results.csv
+                                                                          │
+                                                                   load_to_db.py ──→ MySQL
+
+v2 (improved):
+  PDF all pages ──→ batch_extract_v2.py (pdftotext) ──→ extracted_wells_v2.csv
+                                                         extracted_stimulations_v2.csv
+                                                                  │
+                         final_enriched_results.csv (scraping) ───┤
+                                                                  │
+                                                           load_to_db_v2.py ──→ MySQL (oil_wells_db)
+                                                                                       │
+                                                                                 Part 2: Map Visualization
 ```
+
+### v1 vs v2 Comparison
+
+| Field | v1 (batch_extract.py) | v2 (batch_extract_v2.py) |
+|-------|----------------------|--------------------------|
+| Well Name | 20/77 | 68/77 |
+| API# | 3/77 | 69/77 |
+| Operator | 0/77 | 76/77 |
+| County | 19/77 (scraping only) | 77/77 |
+| Latitude/Longitude | 0/77 | 66/77 |
+| Stimulation records | 0 | 40 |
+
+Key difference: v1 uses OCR (pytesseract) on page 1 only. v2 discovered that the PDFs are **native text** (not scanned images), so it uses `pdftotext` to extract the full text from all pages (~175 pages per PDF on average).
 
 ### Database Schema (3 tables)
 
 | Table | Source | Description | Rows |
 |-------|--------|-------------|------|
-| `wells` | PDF OCR (page 1) | Well basic info: name, API#, county, state, lat/lon | 77 |
-| `stimulations` | PDF OCR (page 2) | Frac data: proppant, pressure, stages, etc. | 0 (TODO) |
+| `wells` | PDF extraction | Well info: name, API#, operator, county, lat/lon | 77 |
+| `stimulations` | PDF extraction | Frac data: proppant, pressure, stages, etc. | 40 |
 | `scraped_info` | drillingedge.com | Status, operator, oil/gas production | 19 |
 
 See `schema.sql` for full column definitions.
 
-### How to Run
+### How to Run (v2)
 
 ```bash
-# 1. Install MySQL (macOS)
-brew install mysql
+# 1. Install dependencies
+brew install mysql poppler
 brew services start mysql
-
-# 2. Install Python dependencies
 pip install mysql-connector-python pandas
 
-# 3. Load data (full rebuild)
-python load_to_db.py --rebuild
+# 2. Extract data from PDFs (specify your PDF folder path)
+python batch_extract_v2.py --pdf-folder /path/to/DSCI560_Lab5
+
+# 3. Load into MySQL
+python load_to_db_v2.py --rebuild
 
 # 4. Verify
 mysql -u root oil_wells_db < queries.sql
@@ -122,31 +148,19 @@ mysql -u root oil_wells_db < queries.sql
 
 If your MySQL has a password:
 ```bash
-MYSQL_PASSWORD="yourpassword" python load_to_db.py --rebuild
+MYSQL_PASSWORD="yourpassword" python load_to_db_v2.py --rebuild
 ```
 
-### Data Cleaning Rules
+### Data Cleaning Rules (per assignment Section 5)
 
-- `N/A`, empty strings, `nan`, `ERROR` → stored as `NULL`
-- API# normalized to `xx-xxx-xxxxx` format
-- `Scraped_Location` ("McKenzie County, ND") split into `county` + `state`
-- `Oil_Produced = 2025` flagged as likely year (not production), stored as `NULL`
+- Missing string fields → stored as `N/A`
+- Missing numeric fields → stored as `0`
+- HTML tags and special characters removed
 - Deduplicated on `PDF_File` (one PDF = one well)
 
-### Current Data Gaps
+### Known Limitations
 
-Fields **required by the assignment** but not yet in the CSV:
-
-| Missing Field | Where It Should Come From |
-|---------------|--------------------------|
-| Operator, Enseco Job#, Job Type | PDF page 1 OCR |
-| Latitude, Longitude, Datum | PDF page 1 OCR — **needed for Part 2 map** |
-| Well Surface Hole Location (SHL) | PDF page 1 OCR |
-| All stimulation fields | PDF page 2 OCR |
-| Well Type, Closest City | Web scraping |
-| Oil/Gas Production (real values) | Web scraping (current values are all "2025") |
-
-**To update**: improve extraction, regenerate `final_enriched_results.csv`, then re-run:
-```bash
-python load_to_db.py --rebuild
-```
+- Some well names extracted as form labels (e.g., "24-HOUR PRODUCTION RATE") due to pdftotext multi-column layout
+- A few longitude values are incorrect due to DMS parsing issues on certain PDF formats
+- Stimulation field values can be swapped (Top/Bottom, Formation/Stages) due to column interleaving in pdftotext output
+- `Oil_Produced` from scraping is all "2025" (year, not barrels) — stored as-is per assignment requirement
