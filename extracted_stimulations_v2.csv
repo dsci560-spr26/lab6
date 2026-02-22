@@ -1,0 +1,41 @@
+PDF_File,Date_Stimulated,Stimulated_Formation,Type_Treatment,Acid_Pct,Lbs_Proppant,Top_Ft,Bottom_Ft,Stimulation_Stages,Volume,Volume_Units,Max_Treatment_Pressure_PSI,Max_Treatment_Rate_Bbls_Min,Details
+W22099.pdf,08/31/2013,Bakken,Sand Frac,,,,,,,,,,100 Mesh: 124804; 40/70 White: 1416922; 20/40 Ceramic: 2
+W22221.pdf,09/07/2013,,Sand Frac,,3765029,11117,36,36,90354,Barrels,8782,37.7,40170 White: 1458059; 20/40 Ceramic: 2
+W23230.pdf,10/26/2012,Three Forks,Sand Frac,,3700348,11101,20482,20482,92216,Barrels,9214,42.2,
+W23365.pdf,12/14/2014,22585,Acid %,1,,,,,1,72511,,23.0,
+W23367.pdf,11/21/2013,3 Forks,Lbs Proppant,,,10858,22005,22005,,,,,
+W25156.pdf,7/7/2013,Bakken,Sand Frac,,21276,,,11386,30,Barrels,2686987,7682,
+W25157.pdf,3/14/2014,Three Forks,Sand Frac,,18434,,,10830,24,Barrels,2829582,8491,
+W25158.pdf,3/14/2014,Bakken,Sand Frac,,18127,,,,,Barrels,3013084,,
+W25159.pdf,2/27/2014,Three Forks,Sand Frac,,23475,,,10850,8493,Barrels,3937842,,
+W25160.pdf,3/2/2014,Bakken,Sand Frac,,23122,,,10968,74589,Barrels,3788746,,
+W25571.pdf,09/11/2013,Bakken,Sand Frac,,3826701,,,21090,95801,Barrels,9406,36.0,40/70 White: 1462926; 20/40 Ceramic: 2236396
+W28303.pdf,03/29/2015,Three Forks,Sand Frac,,3976880,,,,,,,,100 Mesh White: 139800; 40/70 White: 1396480; 20/40 Ceramic: 1845780; 20/40 Resin Coated: 594820
+W28342.pdf,10/31/2014,Three Forks,Sand Frac,,20883,,,,,Barrels,3775876,73.0,40/70 Ceramic: 1461677; 30/50 Ceramic: 2271618; 40/70 White: 42581
+W28394.pdf,04/08/2015,Three Forks,Sand Frac,,,11079,20187,20187,238848,Barrels,9362098,35.0,40/70 White: 1364550; 20/40 White: 6379708; 20/40 Ceramic Resin Coated: 1426830; 100 Mesh White: 191010
+W28425.pdf,04/24/2015,Bakken,Sand Frac,,9170249,,10032,10032,188339,Barrels,9033,38.0,40170 White: 1209680; 20/40 White: 6519540; 20/40 Resin Coated: 1299520; 100 Mesh White: 208460
+W28425.pdf,04/24/2015,Bakken,Sand Frac,,9170249,,,20425,188339,Barrels,,38.0,40/70 White: 1209680; 20/40 White: 6519540; 20/40 Resin Coated: 1299520; 100 Mesh White: 208460
+W28554.pdf,04/08/2015,Bakken,Sand Frac,,9121901,,,50,215747,Barrels,8832,37.0,40170 White: 1424311; 20/40 White: 6280250
+W28557.pdf,04/24/2015,Three Forks,Sand Frac,,,11167,,20517,36,Barrels,3973130,39.0,40/70 White: 1437920; 20/40 Ceramic: 1859940; 20/40 Resin Coated: 605340; 100 Mesh White: 159020
+W28599.pdf,10/30/2014,Bakken,Sand Frac,,20833,,,10910,206015,Barrels,4076819,9177,40170 Ceramic: 1513408; 30/50 Ceramic: 2259661
+W28600.pdf,11/25/2014,Three Forks,Sand Frac,11074,,,,20938,,Barrels,,38.0,40/70 Ceramic: 25340; 40/70 White: 863519; 20/40 White: 5340835
+W28601.pdf,11/25/2014,Three Forks,Sand Frac,11418,21025,,,,95600,Barrels,9370930,37.2,
+W28633.pdf,04/25/2015,Three Forks,Sand Frac,,4332421,,,11140,206323,Barrels,9320,72.0,100 Mesh White: 276871; 40/70 Ceramic: 1760490; 30/50 Ceramic: 2295360
+W28634.pdf,04/25/2015,Bakken,Sand Frac,,3879492,,,11080,223578,Barrels,9244,75.0,100 Mesh White: 277452; 40170 Ceramic: 1460460; 30/50 Ceramic: 2141580
+W28636.pdf,04/25/2015,Three Forks,Sand Frac,,,,,11165,96178,Barrels,4011690,9390,100 Mesh White: 144690; 40170 White: 1554590; 20140 Ceramic: 2282410
+W28637.pdf,04/08/2015,Three Forks,Sand Frac,,3828642,,,36,214367,Barrels,9063,75.0,100 Mesh White: 265265; 40/70 Ceramic: 1428560; 30/50 Ceramic: 2134817
+W28648.pdf,04/27/2015,Bakken,Sand Frac,,3817790,,,11080,215116,Barrels,9426,75.0,100 Mesh White: 286610; 40/70 Ceramic: 1441370; 30/50 Ceramic: 2089810
+W28649.pdf,04/07/2015,Bakken,Sand Frac,,20675,,,,209363,Barrels,3768710,9499,100 Mesh White: 270990; 40170 Ceramic: 1404730; 30/50 Ceramic: 2092990
+W28651.pdf,06/26/2015,Three Forks,Sand Frac,,9426950,,11150,11150,170347,Barrels,8928,37.0,100 Mesh White: 220000; 40170 White: 1224040; 20/40 White: 6593310; 20/40 Resin Coated: 1389600
+W28652.pdf,06/26/2015,Bakken,Sand Frac,,9254340,11125,20460,20460,192526,Barrels,8844,39.0,100 Mesh: 229320; 40/70 White: 1221920; 20/40 White: 6435200; 20/40 Resin Coated: 1367900
+W28654.pdf,06/09/2015,Three Forks Second Bench,Sand Frac,,4230380,,11185,11185,126978,Barrels,9122,39.0,100 Mesh White: 219480; 20/40 White: 1882960; 40/70 White: 1515060; 20/40 Resin Coated: 612880
+W28655.pdf,06/09/2015,Bakken,Sand Frac,,9543260,11113,20645,20645,214895,Barrels,9411,41.0,100 Mesh White: 235860; 40170 White: 1249960; 20/40 White: 6292960; 20/40 Resin Coated: 1364480
+W28755.pdf,07/30/2015,Three Forks,Sand Frac,,3873780,,,,33,Barrels,,9488,100 Mesh White: 282880; 40170 White: 1436860; 30/50 Ceramic: 2154040
+W28756.pdf,07/13/2015,Bakken,Sand Frac,,20592,,11108,11108,220489,Barrels,4243874,9096,100 Mesh White: 314040; 40/70 White: 1556974; 30/50 White: 2372860
+W28976.pdf,03/16/2015,Three Forks,Sand Frac,,9170590,11078,20374,20374,50,Barrels,190732,43.0,40/70 White: 1314300; 20/40 White: 6500390; 20/40 Resin Coated: 1355900
+W29242.pdf,07/16/2015,Bakken,Sand Frac,,,,,,,,,,100 Mesh White: 296000; 40/70 White: 1554520; 30/50 White: 1755330; 30/50 Resin Coated: 497700; 20/40 Resin Coated: 88680
+W29244.pdf,07/17/2015,Three Forks,Sand Frac,,,,,11101,36,Barrels,4183070,9386,100 Mesh White: 301340; 40170 White: 1556480; 30/50 White: 1742280; 30/50 Resin Coated: 511100; 20/40 Resin Coated: 71870
+W29316.pdf,05/26/2015,Bakken,Sand Frac,,9139069,11132,50,50,168692,Barrels,9676,37.6,40/70 White: 1199320; 20/40 White: 6572629; 20/40 Resin Coated: 1367480
+W29317.pdf,06/26/2015,Three Forks,Sand Frac,,9246908,,,11228,170334,Barrels,8985,10.4,40/70 White: 1185500; 20/40 White: 6423398; 20/40 Resin Coated: 1396960; 100 Mesh White: 241050
+W29334.pdf,07/16/2015,Bakken,Sand Frac,,1,,,,36,Barrels,,9141,100 Mesh White: 295320; 30/50 White: 1740010; 30/50 Resin Coated: 504920; 20/40 Resin Coated: 69610
+W90244.pdf,07/20/2013,,Acid,,,,,,,,,,
